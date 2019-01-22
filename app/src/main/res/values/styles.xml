@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+
+    <style name="EditText" parent="Theme.AppCompat.Light">
+        <item name="android:textColorHint">#dfdfdf</item>
+        <item name="colorControlNormal">#537fbd</item>
+        <item name="colorControlActivated">@android:color/white</item>
+    </style>
+</resources>

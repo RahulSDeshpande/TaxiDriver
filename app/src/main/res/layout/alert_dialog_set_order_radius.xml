@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <RadioGroup
+        android:id="@+id/radio_group_order_radius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radius_500m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="500 метров"/>
+
+        <RadioButton
+            android:id="@+id/radius_1km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="1км"/>
+
+        <RadioButton
+            android:id="@+id/radius_3km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3км" />
+
+        <RadioButton
+            android:id="@+id/radius_5km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5км" />
+
+        <RadioButton
+            android:id="@+id/radius_10km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10км" />
+
+        <RadioButton
+            android:id="@+id/radius_15km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15км" />
+    </RadioGroup>
+
+</RelativeLayout>

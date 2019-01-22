@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp">
+
+    <TextView
+        android:id="@+id/t_v_label_client_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="Имя клиента: " />
+
+    <TextView
+        android:id="@+id/t_v_client_name"
+        android:layout_below="@id/t_v_label_client_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/t_v_label_client_phone"
+        android:layout_below="@id/t_v_client_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="Тел.номер клиента: " />
+
+    <TextView
+        android:id="@+id/t_v_client_phone"
+        android:layout_below="@id/t_v_label_client_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/t_v_label_from"
+        android:layout_below="@id/t_v_client_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Откуда: " />
+
+    <TextView
+        android:id="@+id/t_v_from"
+        android:layout_below="@id/t_v_label_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/t_v_label_to"
+        android:layout_below="@id/t_v_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Куда: " />
+
+    <TextView
+        android:id="@+id/t_v_to"
+        android:layout_below="@id/t_v_label_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/t_v_label_taxi_must_arrive_at_time"
+        android:layout_below="@id/t_v_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Время прибытия: " />
+
+    <TextView
+        android:id="@+id/t_v_taxi_must_arrive_at_time"
+        android:layout_below="@id/t_v_label_taxi_must_arrive_at_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/t_v_label_order_cost"
+        android:layout_below="@id/t_v_taxi_must_arrive_at_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:text="СУММА: " />
+
+    <TextView
+        android:id="@+id/t_v_order_cost"
+        android:layout_toRightOf="@id/t_v_label_order_cost"
+        android:layout_alignTop="@+id/t_v_label_order_cost"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/t_v_label_payment_type"
+        android:layout_below="@id/t_v_order_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Тип оплаты: " />
+
+    <TextView
+        android:id="@+id/t_v_payment_type"
+        android:layout_toRightOf="@id/t_v_label_payment_type"
+        android:layout_alignTop="@+id/t_v_label_payment_type"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/t_v_label_distance_between_from_and_to"
+        android:layout_below="@id/t_v_payment_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="Расстояние: " />
+
+    <TextView
+        android:id="@+id/t_v_distance_between_from_and_to"
+        android:layout_toRightOf="@id/t_v_label_distance_between_from_and_to"
+        android:layout_alignTop="@+id/t_v_label_distance_between_from_and_to"
+        android:layout_marginLeft="5dp"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
