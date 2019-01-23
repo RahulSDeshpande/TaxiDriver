@@ -2,8 +2,10 @@ package org.taxidriver.ui.activities
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlarmManager
 import android.app.AlertDialog
 import android.app.Dialog
+import android.app.PendingIntent
 import android.content.Context
 import android.content.pm.PackageManager
 import android.support.v7.app.AppCompatActivity
@@ -18,6 +20,7 @@ import android.graphics.PointF
 import android.location.Location
 import android.media.MediaPlayer
 import android.net.Uri
+import android.os.Build
 import org.json.JSONException
 import org.taxidriver.app.App.Companion.channel
 import org.taxidriver.utils.*
@@ -50,9 +53,12 @@ import com.yandex.mapkit.user_location.UserLocationView
 import com.yandex.runtime.Error
 import com.yandex.runtime.image.ImageProvider
 import kotlinx.android.synthetic.main.activity_authorization.*
+import org.taxidriver.api.models.requests.NewOrderRequest
 import org.taxidriver.api.models.requests.StatusOnRequest
+import org.taxidriver.api.models.responses.RequestOrdersResponse
 import org.taxidriver.api.models.responses.StatusOnResponse
 import org.taxidriver.app.App
+import org.taxidriver.services.ReceiverOnWork
 import java.text.SimpleDateFormat
 import retrofit2.Call
 import retrofit2.Callback
@@ -270,10 +276,24 @@ class MainActivity : AppCompatActivity, NavigationView.OnNavigationItemSelectedL
                 }
 
                 override fun onResponse(call: Call<StatusOnResponse>?, response: Response<StatusOnResponse>?) {
-                    if(response?.body()?.status!!)
+                    if(response?.body()?.status!!){
                     onWork = workSwitch?.isChecked
-                    else Toast.makeText(this@MainActivity, "Ошибка сервера", Toast.LENGTH_SHORT).show()
+                        setAlarmReceiverOnWork(applicationContext)
 
+                        App.api?.requestOrders(NewOrderRequest(
+                                driver_id, driver_lat, driver_lng
+                        ))?.enqueue(object : Callback<RequestOrdersResponse> {
+                            override fun onFailure(call: Call<RequestOrdersResponse>?, t: Throwable?) {
+                                Toast.makeText(applicationContext, "NEEETT", Toast.LENGTH_LONG).show()
+                            }
+
+                            override fun onResponse(call: Call<RequestOrdersResponse>?, response: Response<RequestOrdersResponse>?) {
+                                Toast.makeText(applicationContext, "DAAAAAAA", Toast.LENGTH_LONG).show()
+                            }
+                        })
+
+                    }
+                    else Toast.makeText(this@MainActivity, "Ошибка сервера", Toast.LENGTH_SHORT).show()
                 }
             })
         }
@@ -920,5 +940,24 @@ class MainActivity : AppCompatActivity, NavigationView.OnNavigationItemSelectedL
         userLocationView?.accuracyCircle?.fillColor = Color.BLUE
     }
 
+    fun setAlarmReceiverOnWork(ctx: Context) {
+        val am: AlarmManager = ctx.applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intentToTimerReceiver = Intent(ctx.applicationContext, ReceiverOnWork::class.java)
+        intentToTimerReceiver.putExtra("driver_id", driver_id)
+        intentToTimerReceiver.putExtra("lat", driver_lat)
+        intentToTimerReceiver.putExtra("lng", driver_lng)
+
+        intentToTimerReceiver.action = "action_onWork"
+
+        val pendingIntent = PendingIntent.getBroadcast(
+                ctx.applicationContext,
+                0,
+                intentToTimerReceiver,
+                PendingIntent.FLAG_CANCEL_CURRENT)
+
+        val periodInMinutes = 1
+        val periodInMiliseconds = (periodInMinutes * 1 * 1000).toLong()
+            am.setInexactRepeating(AlarmManager.RTC_WAKEUP, periodInMiliseconds, periodInMiliseconds, pendingIntent)
+    }
 
 }

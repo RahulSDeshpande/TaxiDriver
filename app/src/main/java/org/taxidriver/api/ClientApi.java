@@ -19,8 +19,11 @@ public interface ClientApi {
     @POST("status/change/")
     Call<StatusOnResponse> setOnWork(@Body StatusOnRequest request);
 
-    @POST("order/create/")
-    Call<NewOrderResponse> createNewOrder(@Body NewOrderRequest request);
+    @POST("request/orders/")
+    Call<RequestOrdersResponse> requestOrders(@Body NewOrderRequest request);
+
+
+
 
     @POST("order/cancel/")
     Call<CancelOrderResponse> cancelOrder(@Body CancelOrderRequest request);
